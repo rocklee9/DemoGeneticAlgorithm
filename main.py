@@ -33,7 +33,6 @@ def Genetic_Algorithm():
 class SimulationResult: 
     def __init__(self,home,cost_1,flat_1,cost_2,flat_2,cost_3,flat_3,cost_4,flat_4,cost_5,flat_5): 
         self.home = home 
-        self.survey = survey
         self.cost_1 = cost_1
         self.cost_2 = cost_2
         self.cost_3 = cost_3
