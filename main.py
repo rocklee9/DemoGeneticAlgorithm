@@ -21,7 +21,7 @@ def Genetic_Algorithm():
        
 #tạo dữ liệu mẫu để test
     list = []
-    list.append( SimulationResult('Home 1',  85.590, 1.894, 86.490, 1.894, 86.757, 1.818, 86.257, 1.840, 86.599 1.815))
+    list.append( SimulationResult('Home 1',  85.590, 1.894, 86.490, 1.894, 86.757, 1.818, 86.257, 1.840, 86.599, 1.815))
     list.append( SimulationResult('Home 2',  109.691, 1.830, 109.366, 1.801, 109.482, 1.785, 111.616, 1.762, 109.334, 1.817 ))
     list.append( SimulationResult('Home 3', 125.364, 2.011, 125.176, 2.025, 125.939, 2.058, 125.693, 2.049, 125.476, 2.052  ))
     list.append( SimulationResult('Home 4', 111.498, 1.703, 111.440, 1.738, 111.423, 1.717, 111.798, 1.697, 111.948, 1.704 ))
