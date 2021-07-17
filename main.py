@@ -44,7 +44,92 @@ class SimulationResult:
         self.flat_4 = flat_4
         self.flat_5 = flat_5
         
+# xử lý các api khác
 
+@app.route('/electrical-appliances', methods=['GET'])
+@cross_origin()
+def Electrical_Appliances():
+
+    list = []
+    list.append( Electrical('Refrigerator',  1, 0.1, 288, 'ND-NI'))
+    list.append( Electrical('D. Freezer',  2, 0.06, 288, 'ND-NI'))
+    list.append( Electrical('Oven',  3, 2.0, 14, 'D-NI'))
+    list.append( Electrical('Iron',  4, 2.4, 13, 'D-I'))
+    
+    with open('twitterData.json', 'w') as outfile:
+     json_string = json.dumps([ob.__dict__ for ob in list])
+    return json_string;
+    
+class Electrical: 
+    def __init__(self,name,id,power,period,type): 
+        self.id = id
+        self.name = name
+        self.power = power
+        self.period = period
+        self.type = type
+        
+@app.route('/home', methods=['GET'])
+@cross_origin()
+def Home():
+
+    list = []
+    list.append( Home('Home 1',  1))
+    list.append( Home('Home 2',  2))
+    list.append( Home('Home 3',  3))
+    list.append( Home('Home 4',  4))
+    
+    with open('twitterData.json', 'w') as outfile:
+     json_string = json.dumps([ob.__dict__ for ob in list])
+    return json_string;
+    
+class Home: 
+    def __init__(self,name,id): 
+        self.id = id
+        self.name = name
+        
+
+        
+@app.route('/electrical-appliances/home/<id>', methods=['GET'])
+@cross_origin(id)
+def Electrical_Appliances_Home(id):
+    print(id)
+    list = []
+    list.append( AppliancesHome('Refrigerator',  1,1))
+    list.append( AppliancesHome('Refrigerator 1',  2,1))
+    list.append( AppliancesHome('Refrigerator 2',  3,1))
+    list.append( AppliancesHome('Refrigerator 3',  4,1))
+    
+    with open('twitterData.json', 'w') as outfile:
+     json_string = json.dumps([ob.__dict__ for ob in list])
+    return json_string;
+    
+class AppliancesHome: 
+    def __init__(self,name,id,number): 
+        self.number = number 
+        self.id = id
+        self.name = name
+        
+@app.route('/genetic-algorithm/home', methods=['GET'])
+@cross_origin(id)
+def genetic_Algorithm_Home():
+    id = request.args.get('id', None) 
+    number = request.args.get('number', None)
+    print(id)
+    print(number)
+    list = []
+    for x in range(int(number)):
+        list.append( GeneticAlgorithmHome(1.2,  85.59))
+    
+    
+    with open('twitterData.json', 'w') as outfile:
+     json_string = json.dumps([ob.__dict__ for ob in list])
+    return json_string;
+    
+class GeneticAlgorithmHome: 
+    def __init__(self,flat,cost): 
+        self.flat = flat 
+        self.cost = cost
+        
 
 # Thuc thi server
 if __name__ == '__main__':
